@@ -307,6 +307,7 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    $(LOCAL_PATH)/bluetooth-audio \
     hardware/google/pixel/pixelstats \
     hardware/google/pixel/power-libperfmgr \
     hardware/google/interfaces \
