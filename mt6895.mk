@@ -331,8 +331,6 @@ PRODUCT_PACKAGES += \
     android.hardware.usb.gadget-service.mediatek
 
 # Vibrator
-$(call soong_config_set_bool, vibrator, vibratortargets, vibratoraidlV2target)
-
 $(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
 
 # Wi-Fi
