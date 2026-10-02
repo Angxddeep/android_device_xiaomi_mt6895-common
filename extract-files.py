@@ -55,8 +55,6 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('1.1', '1.2'),
     'vendor/etc/public.libraries.txt': blob_fixup()
         .add_line_if_missing('libmpbase.so'),
-    ('vendor/bin/hw/android.hardware.gnss-service.mediatek', 'vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so'): blob_fixup()
-        .replace_needed('android.hardware.gnss-V1-ndk_platform.so', 'android.hardware.gnss-V1-ndk.so'),
     'vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b': blob_fixup()
         .replace_needed('libavservices_minijail_vendor.so', 'libavservices_minijail.so')
         .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0-v31.so')
@@ -65,8 +63,13 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so'),
     'vendor/lib64/hw/sensors.mediatek.V2.0.so': blob_fixup()
        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
-    'vendor/bin/mnld' : blob_fixup()
-        .replace_needed('libmnl.so', 'libmnl_mtk.so'),
+    'vendor/bin/mnld': blob_fixup()
+            .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so')
+            .replace_needed('libmnl.so', 'libmnl-mtk.so')
+            .binary_regex_replace(
+                b'_ZN9HfManager22enableSensorDownSampleEill',
+                b'_ZN9HfManager12enableSensorEill'.ljust(41, b'\x00'),
+            ),
     'vendor/lib64/libcodec2_hidl@1.0-v31.so': blob_fixup()
         .replace_needed('libstagefright_bufferqueue_helper.so', 'libstagefright_bufferqueue_helper-v35.so')
         .replace_needed('libcodec2_hidl_plugin.so', 'libcodec2_hidl_plugin-v31.so')
