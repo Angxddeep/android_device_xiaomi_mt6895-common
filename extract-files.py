@@ -53,8 +53,6 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('1.1', '1.2'),
     'vendor/etc/public.libraries.txt': blob_fixup()
         .add_line_if_missing('libmpbase.so'),
-    ('vendor/bin/hw/android.hardware.gnss-service.mediatek', 'vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so'): blob_fixup()
-        .replace_needed('android.hardware.gnss-V1-ndk_platform.so', 'android.hardware.gnss-V1-ndk.so'),
     'vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b': blob_fixup()
         .add_needed('libstagefright_foundation-v33.so')
         .replace_needed('libavservices_minijail_vendor.so', 'libavservices_minijail.so'),
@@ -76,8 +74,12 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/mt6895/libaalservice.so': blob_fixup()
         .replace_needed('libsensorndkbridge.so', 'android.hardware.sensors@1.0-convert-shared.so'),
     'vendor/bin/mnld': blob_fixup()
-        .replace_needed('libsensorndkbridge.so', 'android.hardware.sensors@1.0-convert-shared.so')
-        .replace_needed('libmnl.so', 'libmnl-mtk.so'),
+        .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so')
+        .replace_needed('libmnl.so', 'libmnl-mtk.so')
+        .binary_regex_replace(
+            b'_ZN9HfManager22enableSensorDownSampleEill',
+            b'_ZN9HfManager12enableSensorEill'.ljust(41, b'\x00'),
+        ),
     'vendor/lib64/mt6895/libneuralnetworks_sl_driver_mtk_prebuilt.so': blob_fixup()
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_createFromHandle')

@@ -1,6 +1,6 @@
 # Unpinned blobs from plato-user 15 SP1A.210812.016 OS2.0.215.0.VLQMIXM release-keys
 # duchamp: duchamp_global-user 15 UP1A.230905.011 OS2.0.100.0.VNLMIXM release-keys
-# aristotle: aristotle_id_global-user 16 BP2A.250605.031.A3 OS3.0.1.0.WMFIDXM release-keys
+# aristotle: aristotle_global-user 16 BP2A.250605.031.A3 OS3.0.5.0.WMFMIXM release-keys
 
 # Audio
 vendor/lib64/hw/sound_trigger.primary.default.so
@@ -252,42 +252,44 @@ vendor/lib64/libmfido_isee.so
 # Gatekeeper
 vendor/lib64/hw/gatekeeper.beanpod.so
 
-# GNSS
-vendor/bin/hw/android.hardware.gnss-service.mediatek
-vendor/bin/mnld
-vendor/bin/mtk_agpsd
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_ATnT_Mexico.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_ATnT_US.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_CMCC.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_CT.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_CU.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Claro_Colombia.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Claro_Peru.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Entel_Peru.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_KDDI.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_SK_Telecom.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_SoftBank.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Sprint.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_T-Mobile_US.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Test_SIM1.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Test_SIM2.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Verizon_Wireless.xml
-vendor/etc/gnss/agps_profiles_conf2.xml
-vendor/etc/init/android.hardware.gnss-service.mediatek.rc
-vendor/etc/init/init.gps_drv.rc
-vendor/etc/init/init.gps_pwr.rc
-vendor/etc/init/init.gps_scp.rc
-vendor/etc/init/mtk_agpsd_p.rc
-vendor/etc/vintf/manifest/gnss-default.xml:vendor/etc/vintf/manifest/gnss-mtk.xml
-vendor/etc/vintf/manifest/gnss@2.1-service.xml
-vendor/etc/slp_conf
-vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so
-vendor/lib64/hw/android.hardware.gnss@2.1-impl-mediatek.so
-vendor/lib64/hw/gps.default.so
-vendor/lib64/mt6895/libDR.so;SYMLINK=vendor/lib64/libDR.so
-vendor/lib64/mt6895/libmnl.so:vendor/lib64/mt6895/libmnl-mtk.so;FIX_SONAME;SYMLINK=vendor/lib64/libmnl-mtk.so
-vendor/lib64/librpc.so
-vendor/lib64/libviagpsrpc.so
+# GNSS - from aristotle
+vendor/bin/hw/android.hardware.gnss-service.mediatek|ae02186941a04d5f3702843d875136bdc4cc3f81
+vendor/bin/mnld|e4c606b745f715964b2f7580d428278da6a51cd9|88c5be6739fd455de05e35ba119dcfef90f965ea
+vendor/bin/mtk_agpsd|2885ccf9aebc446774f8d96a01197b980a9223b7
+vendor/etc/MNL_Config.xml|abc2fb28bc486e64f55e9be7448b6f7f00737744
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_ATnT_Mexico.xml|e07c04d9bd48d81f98beb2dfd6abf621c44dc9fa
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_ATnT_US.xml|8cdd031bd535d7cbe30c214607ee54b46127925b
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Claro_Peru.xml|be3ebb28c6b0fb77ddb42077ad5cab3af65ac2bc
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_DoCoMo.xml|107dcac9589a36a07078cec3b6950311cfd1ccd3
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Entel_Peru.xml|bc821c8873b1791a1a7c448eaaa24d968a760e33
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_KDDI.xml|4f9a848e375fc86e02f24291ef1766ffc589d4cf
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Movistar_Chile.xml|e326215713615620a2664cad72ed9b2e425d2785
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Movistar_Ecuador.xml|443ab0949f84947b5e4a5294749fcb9c0f495259
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Movistar_Peru.xml|52a011838aa691869f8a0e2899a1c989e762c8b0
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Rakuten.xml|9b732abb324ee62ab5698357a99ad604f47c9bcc
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_SK_Telecom.xml|5fece46fbd162b86061634a6a3370df53df1b93c
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_SoftBank.xml|835e10a91b270601c1405e81c71c09e0c2ed09c1
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Sprint.xml|1ac6b94675921d744805dd8c12134b79c09fb8b8
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_T-Mobile_US.xml|d2330c26fd2a144bb2801978f22092cfcd3fffc6
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Test_SIM1.xml|1460bb64af93693692f5c49ab979d9359238a21e
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Test_SIM2.xml|41061ac5dace0fbbfcccfc35227247cc2d1e87cb
+vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Verizon_Wireless.xml|00527b19ab53fda3060145ad4148b1451fc0d109
+vendor/etc/gnss/agps_profiles_conf2.xml|05ad23aa055ca100b2ba02577cf6096edc630747
+vendor/etc/init/android.hardware.gnss-service.mediatek.rc|d9d7daeb61307a24adf968e9af98dc3bbdfe7ce9
+vendor/etc/init/init.gps_drv.rc|37989279b79db8a5d910249c257744aa9efc4589
+vendor/etc/init/init.gps_pwr.rc|43d127e030f97eea490956d83c76eb3e82c25220
+vendor/etc/init/init.gps_scp.rc|faede9f5bfac7ab7b3271ccf43478f29e6119053
+vendor/etc/init/mtk_agpsd_p.rc|305c5521d2e9a4d4be7abcc211611b984a0a44d9
+vendor/etc/vintf/manifest/gnss-default.xml:vendor/etc/vintf/manifest/gnss-default-mtk.xml|d939d34043d8009c68141f9cef72165df9b47dbf
+vendor/etc/vintf/manifest/gnss-mtk.xml|4a288495b3561e92ac16da95540b083ffd0017e4
+vendor/etc/slp_conf|8e0eeb966b5f1f2d506342aae276cbf3cd115039
+vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so|6b9ec6bd1fa6948273ad3b09a0c6d8ecb44f8397
+vendor/lib64/hw/gps.default.so|b562d0f4b2e606aef3264c2c6bd7d9bc85a5a2f2
+vendor/lib64/hw/vendor.mediatek.hardware.gnss-impl.so|49ac743f213e1eb521a2efd24319a892b2cfea8f
+vendor/lib64/mt6895/libDR.so;SYMLINK=vendor/lib64/libDR.so|13249363e732a4e7e1450d97dfa1f9d1c579d880
+vendor/lib64/mt6895/libmnl.so:vendor/lib64/mt6895/libmnl-mtk.so;FIX_SONAME;SYMLINK=vendor/lib64/libmnl-mtk.so|08de9fbf28755d2c9f620a4096d9e082f18f23e1|ccf9ae38ac57901996958190b567eabed9ac6997
+vendor/lib64/vendor.mediatek.hardware.gnss-V3-ndk.so|0708445d279ddc1a69bdd69be2df34091adf2ffb
+vendor/lib64/vendor.mediatek.hardware.lbs-V1-ndk.so|e7f7d09fb10de79d08cc7df6d27d8ae5f8a8bf52
 
 # IMS - from aristotle
 system_ext/bin/vtservice|4a8759f67cc4f238983c57193d88d1cc13956e06
