@@ -1,0 +1,34 @@
+From 3ea39ee3ef67a87cc8f6bf983bfe2f52bd31b06f Mon Sep 17 00:00:00 2001
+From: Angaddeep Singh <angxddeep@gmail.com>
+Date: Tue, 25 Aug 2026 17:13:11 +0530
+Subject: [PATCH] ImsLocationHandler: Fix ImsService crash on emergency calls
+
+In modern Android frameworks, android.os.PackageTagsList
+does not contain the `includes(String)` method, which was replaced by
+`containsPackage(String)`.
+
+When dialing an emergency call (e.g. 911/112) from the lockscreen,
+ImsLocationHandler checks the location ignore settings whitelist by
+calling `PackageTagsList.includes()`, resulting in a NoSuchMethodError
+and fatal crash in com.mediatek.ims (MwiServiceHandlerThread).
+
+Patch ImsLocationHandler smali to call `containsPackage(String)` instead.
+---
+ smali/com/mediatek/wfo/impl/ImsLocationHandler.smali | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali b/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
+index f960537..8650623 100644
+--- a/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
++++ b/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
+@@ -4522,7 +4522,7 @@
+     .local v2, "whitelist":Landroid/os/PackageTagsList;
+     if-eqz v2, :cond_0
+ 
+-    invoke-virtual {v2, v1}, Landroid/os/PackageTagsList;->includes(Ljava/lang/String;)Z
++    invoke-virtual {v2, v1}, Landroid/os/PackageTagsList;->containsPackage(Ljava/lang/String;)Z
+ 
+     move-result v3
+ 
+-- 
+2.56.0
